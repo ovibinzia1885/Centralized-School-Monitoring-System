@@ -22,8 +22,4 @@ In an Upazila there are many schools and schools are monitored by an education o
 <img src="UI/Teacher Dashboardd2 CSMS.png" />
 
 
-## Trello Board
-<img src="UI/Centralized School Monitoring System Trello.png" />
 
-__Link-__ 
-https://trello.com/b/06Yu3XRP/centralized-school-monitoring-system
