@@ -1,0 +1,74 @@
+{% extends 'headmaster/h_base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="assign_teacher">
+    <div class="row">
+        <div class="col-9">
+            <div class="assign_tech_table">
+                <h3 class="mb-4">Assigned Teacher</h3>
+                {% if hasAssigned %}
+                {% if hasAssigned == True %}
+                <p class="alert alert-danger">This class is already assigned.</p>
+                {% else %}                
+                <p class="alert alert-success">Teacher assigned successfully.</p>
+                {% endif %}                
+                {% endif %}                
+                    <table class="table" style="text-align: center;">
+                            <thead>
+                              <tr>                                 
+                                <th scope="col">Teacher EMP ID</th>
+                                <th scope="col">Assigned Classes</th>                                
+                                <th scope="col">Remove</th>                               
+                              </tr>
+                            </thead>
+                            <tbody>
+                              {% for teacher in teacher %}                        
+                              <tr>
+                                <td>{{ teacher.t_empid }}</td>
+                                <td>{{ teacher.classes}}</td>                                
+                                <td>                                  
+                                  <a href="{{ teacher.delete_teacher }}" class="btn btn-sm btn-danger"><i class="fa fa-trash" aria-hidden="true"></i>
+                                  </a>
+                                </td>
+                              </tr>
+                              {% endfor %}                              
+                            </tbody>
+                          </table>
+                          {% if not teacher %}
+                              <p class="text-danger">No teacher assigned!</p>
+                              {% endif %}
+            </div>
+        </div>
+        <div class="col-3">            
+            <h3 class="mb-4">Assign New </h3>
+            <div class="p-2 bg-white">
+            <form action="" method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{ form | crispy }}
+                    <input type="submit" class="btn btn-sm btn-success" value="Assign">
+            </form>
+        </div>
+        </div>
+    </div>    
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#t_empid').change(function () {
+            var id = $('#t_empid').val();
+            $.ajax({
+                type: 'GET',
+                url: 'change_tname',
+                data: {
+                    'ids': id
+
+                },
+                success: function () {
+
+                }
+
+
+            })
+        })
+    })
+</script>
+{% endblock %}

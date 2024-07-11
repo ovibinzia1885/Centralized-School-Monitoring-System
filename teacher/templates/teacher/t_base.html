@@ -1,0 +1,63 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Teacher Dashboard | CSMS</title>
+    <link rel="icon" href="{% static 'images/logo.png'%}" type="image/gif" sizes="16x16">
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+    <!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">-->
+    <link rel="stylesheet" href="{% static 'fontawesome/css/all.min.css' %}">
+    <script src="https://kit.fontawesome.com/a215bce284.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{% static 'styles/app.css' %}">
+    <script src="{% static 'js/jquery-3.4.1.min.js' %}" type="text/javascript"></script>
+</head>
+
+<body>
+    <nav class="navbar navbar-dark bg-dark fixed-top">
+        <a class="navbar-brand" href="{% url 'home' %}"><i style="margin-right:15px"
+                class="fas fa-school"></i>Centralized
+            School
+            Monitoring System</a>
+        <div class="right_link justify-content-end">
+            <ul class="">
+                <li class=""><a class="" href="about">About</a></li>
+                <li class=""><a class="" href="about">Blog</a></li>
+                <li class=""><a class="" href="about">Features</a></li>
+                <li class=""><a class="" href="about">FAQ</a></li>
+            </ul>
+        </div>
+    </nav>
+    <section id="dashboard-body" style="margin-top: 56px;">
+        <div class="row mr-0">
+            <div class="col-2">
+                <div class="sidebar t_sidebar">
+                    <div class="side_menu" class="list-group">
+                        <a href="{% url 't_dash' %}" class="list-group-item"><i
+                                class="fas fa-tachometer-alt"></i>Dashboard</a>
+                        <!-- <a href="#order" class="list-group-item"><i class="far fa-plus-square"></i>Take Attendence</a>
+                        <a href="#order" class="list-group-item"><i class="far fa-plus-square"></i>Update Result</a> -->
+                        <a href="{% url 'classes' %}" class="list-group-item"><i
+                                class="fas fa-chalkboard"></i>Classes</a>
+                        <a href="{% url 'taccount_details' %}" class="list-group-item"><i
+                                class="far fa-user-circle"></i>My
+                            Account</a>
+                        <a href="{% url 'teach_logout' %}" class="list-group-item"><i
+                                class="fas fa-sign-out-alt"></i>Logout</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-10">
+                <div class="" id="page_content">
+                    {% block content %}
+                    {% endblock %}
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+
+</html>

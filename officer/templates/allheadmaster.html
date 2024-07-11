@@ -1,0 +1,37 @@
+{% extends 'o_base.html' %}
+{% block content %}
+<div>
+    <h3 class="font-weight-bold mb-4">All Headmaster</h3>
+</div>
+<div class="head_verify">
+<div class="row">
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Profile Picture</th>
+                <th scope="col">Headmaster Name</th>
+                <th scope="col">Headmaster Email</th>
+                <th scope="col">Employee ID</th>
+                <th scope="col">School EIIN</th>
+                <th scope="col">Phone</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for head in headmasters %}
+            <tr>
+                <td><img class="rounded-circle" src="{{ head.dp.url }}" alt=""></td>
+                <td>{{ head.h_fullname }}</td>
+                <td>{{ head.h_email}}</td>
+                <td>{{ head.h_empid }}</td>
+                <td>{{ head.sch_eiin}}</td>
+                <td> {{ head.h_phone}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% if not headmasters %}
+    <span class="text-danger">No headmaster Registered!</span>
+    {% endif %}
+</div>
+</div>
+{% endblock %}

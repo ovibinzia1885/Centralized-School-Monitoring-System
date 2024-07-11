@@ -1,0 +1,44 @@
+{% extends 'o_base.html' %}
+{% block content %}
+<div class="row">
+    {% for sch in school %}
+    <div class="col-3 mb-4">
+        <div class="school">
+            <a href="{{ sch.get_absolute_url }}">
+            <div class="school_name">
+                <h5 class="font-weight-bold">{{ sch.schoolName }}</h5>
+            </div>
+            <div class="school_info">
+                <div class="info">
+                    <div class="number float-left">
+                        <h1 style="color: #1ca849;">{{ sch.totalStudent }}</h1>
+                    </div>
+                    <div class="text">
+                        <p>Total Number of Students</p>
+                    </div>
+                </div>
+                <div class="info">
+                    <div class="number float-left">
+                        <h1 style="color: #b505b5;">{{sch.attendance_percentage}}%</h1>
+                    </div>
+                    <div class="text">
+                        <p>Attendance</p>
+                        <p class="attntxt">Last 7 days</p>
+                    </div>
+                </div>
+                <div class="info">
+                    <div class="number float-left">
+                        <h1 style="color: #ff7a00;">{{sch.pass_percentage}}%</h1>
+                    </div>
+                    <div class="text">
+                        <p>Passed</p>
+                        <p class="restxt">Half yearly exam 2019</p>
+                    </div>
+                </div>
+            </div>
+            </a>
+        </div>
+    </div>    
+    {% endfor %}
+</div>
+{% endblock %}
